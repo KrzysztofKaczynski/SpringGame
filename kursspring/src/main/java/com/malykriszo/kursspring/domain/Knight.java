@@ -3,27 +3,33 @@ package com.malykriszo.kursspring.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 @Component
 public class Knight {
 
-    @Value("Lancelot")
+
     private String name;
 
-    @Value("29")
     private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     private Quest quest;
 
     public Knight() {
+        this.name = "Lancelot";
+        this.age = 29;
     }
 
-
-    //    public Knight(String name, int age, Quest quest) {
-//        this.name = name;
-//        this.age = age;
-//        this.quest = quest;
-//    }
+    public Knight(String name, int age) {
+      this.name = name;
+      this.age = age;
+    }
 
     @Autowired
     public void setQuest(Quest quest) {
