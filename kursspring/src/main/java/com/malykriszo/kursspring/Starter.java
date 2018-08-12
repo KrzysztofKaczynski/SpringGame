@@ -1,6 +1,6 @@
 package com.malykriszo.kursspring;
 
-import com.malykriszo.kursspring.domain.Castle;
+import com.malykriszo.kursspring.domain.repository.KnightRepository;
 import com.malykriszo.kursspring.domain.Tournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Starter implements CommandLineRunner {
 
     @Autowired
-    Castle castle;
+    KnightRepository knightRepository;
 
     @Autowired
     Tournament tournament;
@@ -18,7 +18,7 @@ public class Starter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        System.out.println(castle);
+        System.out.println(knightRepository);
 
         tournament.duel();
         System.out.println(tournament);
