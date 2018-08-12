@@ -11,7 +11,7 @@
     <bean id="quest" class="com.malykriszo.kursspring.domain.Quest" scope="prototype"/>
 
     <bean id="lancelot"
-          class="com.malykriszo.kursspring.domain.Knight"
+          class="com.malykriszo.kursspring.domain.Knight" primary="true"
           scope="prototype">
         <constructor-arg index="0" value="Lancelot"/>
         <constructor-arg index="1" value="29"/>

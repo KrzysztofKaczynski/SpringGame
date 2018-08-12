@@ -9,8 +9,13 @@
     <bean id="zamek" class="com.malykriszo.kursspring.domain.Castle"
           init-method="build"
           destroy-method="tearDown">
-        <constructor-arg index="0" ref="knight"/>
+        <constructor-arg index="0" ref="lancelot"/>
         <property name="name" value="${my.castle.name:East Watch}"/>
+    </bean>
+
+    <bean id="tournament"
+          class="com.malykriszo.kursspring.domain.Tournament">
+        <property name="knight" ref="percival"/>
     </bean>
 
 

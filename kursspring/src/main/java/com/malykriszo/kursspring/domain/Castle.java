@@ -1,13 +1,11 @@
 package com.malykriszo.kursspring.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class Castle {
@@ -15,13 +13,29 @@ public class Castle {
     @Value("${my.castle.name:East Watch}")
     private String name;
 
+    Map<String, Knight> knights = new HashMap<>();
 
-    Knight knight;
+    public Castle() {
 
-    @Autowired
-    public Castle(@Qualifier(value = "lancelot") Knight knight) {
-        this.knight = knight;
+    }
 
+    Castle(String name) {
+        this.name = name;
+
+    }
+    public void createKnight(String name, int age){
+        knights.put(name, new Knight(name, age));
+    }
+    public Collection<Knight> getAllKnights() {
+        return knights.values();
+    }
+
+    public Knight getKnight(String name) {
+        return knights.get(name);
+    }
+
+    public void deleteKnight(String name){
+        knights.remove(name);
     }
 
     public void build() {
@@ -38,6 +52,6 @@ public class Castle {
     }
 
     public String toString() {
-        return "Znajduje się tu zamek o nazwie: " + this.name + " Zamieszkały przez rycerza " + knight;
+        return "Znajduje się tu zamek o nazwie: " + this.name + " Zamieszkały przez rycerza " + knights;
     }
 }
