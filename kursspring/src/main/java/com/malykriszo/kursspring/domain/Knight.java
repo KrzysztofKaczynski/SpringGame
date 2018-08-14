@@ -1,7 +1,5 @@
 package com.malykriszo.kursspring.domain;
 
-import org.springframework.stereotype.Component;
-@Component
 public class Knight {
 
 
