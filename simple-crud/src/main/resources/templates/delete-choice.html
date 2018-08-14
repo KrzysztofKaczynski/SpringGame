@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Do You really want to delete user?</title>
+</head>
+<body>
+    <h2>Do You really want to delete user?</h2>
+    <a th:href="@{'/students/delete/' + ${sId}}">Tak</a>&nbsp;&nbsp;&nbsp;<a href="/all-students">Nie</a>
+</body>
+</html>

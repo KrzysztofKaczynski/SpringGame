@@ -1,0 +1,7 @@
+1). welcome (/welcome) - controller i reszta
+# 2). all page (/all-students) - || -
+# 3). add student (/students/add)
+# 4). edit student (/students/edit)
+5). delete (/students/delete)
+6). security
+7). web flow
