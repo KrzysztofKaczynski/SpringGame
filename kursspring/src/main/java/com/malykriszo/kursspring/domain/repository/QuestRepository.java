@@ -1,19 +1,35 @@
 package com.malykriszo.kursspring.domain.repository;
 
 import com.malykriszo.kursspring.domain.Quest;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Repository
 public class QuestRepository {
 
-    List<Quest> questList  = new ArrayList<>();
+    Random rand = new Random();
 
-    public void createQuest(String description){
+    List<Quest> questList = new ArrayList<>();
+
+    public void createQuest(String description) {
         questList.add(new Quest(description));
+    }
+
+    public List<Quest> getAll() {
+        return questList;
+    }
+
+    public void deleteQuest(Quest quest) {
+        questList.remove(quest);
+    }
+
+    @PostConstruct
+    public void init() {
     }
 
     @Override
@@ -23,13 +39,18 @@ public class QuestRepository {
                 '}';
     }
 
-    public List<Quest> getAll() {
-        return questList;
+    @Scheduled(fixedDelayString = "${questCreationDelay}")
+    public void createRandomQuest() {
+        List<String> descriptions = new ArrayList<>();
+
+        descriptions.add("Uratuj ksiezniczke");
+        descriptions.add("Wez udzial w turnieju");
+        descriptions.add("Zabij bande goblinow");
+        descriptions.add("Zabij smoka");
+
+        String description = descriptions.get(rand.nextInt(descriptions.size()));
+        System.out.println("Utworzylem zadanie o opisie: " + description);
+        createQuest(description);
     }
 
-    @PostConstruct
-   public void init(){
-        createQuest("Uratuj ksiezniczke");
-        createQuest("Wez udzial w turnieju");
-    }
 }
