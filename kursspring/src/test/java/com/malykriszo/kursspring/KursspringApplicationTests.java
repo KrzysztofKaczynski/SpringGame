@@ -1,6 +1,6 @@
 package com.malykriszo.kursspring;
 
-import com.malykriszo.kursspring.domain.repository.KnightRepository;
+import com.malykriszo.kursspring.domain.repository.InMemoryRepository;
 import com.malykriszo.kursspring.domain.Knight;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ public class KursspringApplicationTests {
     Knight knight;
 
     @Autowired
-    KnightRepository knightRepository;
+    InMemoryRepository inMemoryRepository;
 
     @Test
     public void contextLoads() {
@@ -27,7 +27,7 @@ public class KursspringApplicationTests {
     @Test
     public void testCastle() {
         String except = "Znajduje się tu zamek o nazwie: East Wacht. Zamieszkały przez rycerza Rycerz o imieniu : Lancelot(29). Ma za zadanie: Uratuj Ksieżniczkę.";
-        assertEquals(except, knightRepository.toString());
+        assertEquals(except, inMemoryRepository.toString());
     }
 
 }

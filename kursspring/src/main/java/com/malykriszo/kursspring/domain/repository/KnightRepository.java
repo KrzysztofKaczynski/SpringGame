@@ -1,49 +1,22 @@
 package com.malykriszo.kursspring.domain.repository;
 
 import com.malykriszo.kursspring.domain.Knight;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-@Repository
-public class KnightRepository {
+/**
+ * com.malykriszo.kursspring.domain.repository Created by MałyKriszo on 2018-08-17.
+ */
+public interface KnightRepository {
+    void createKnight(String name, int age);
 
+    Collection<Knight> getAllKnights();
 
-    Map<String, Knight> knights = new HashMap<>();
+    Knight getKnight(String name);
 
-    public KnightRepository() {
-
-    }
-
-    public void createKnight(String name, int age) {
-        knights.put(name, new Knight(name, age));
-    }
-
-    public Collection<Knight> getAllKnights() {
-        return knights.values();
-    }
-
-    public Knight getKnight(String name) {
-        return knights.get(name);
-    }
-
-    public void deleteKnight(String name) {
-        knights.remove(name);
-    }
+    void deleteKnight(String name);
 
     @PostConstruct
-    public void build() {
-        createKnight("Lancelot", 29);
-        createKnight("Percival", 25);
-    }
-
-    @Override
-    public String toString() {
-        return "KnightRepository{" +
-                "knights=" + knights +
-                '}';
-    }
+    void build();
 }

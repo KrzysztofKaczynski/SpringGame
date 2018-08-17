@@ -6,7 +6,7 @@
 
     <context:property-placeholder location="classpath:knightRepository.properties"/>
 
-    <bean id="zamek" class="com.malykriszo.kursspring.domain.repository.KnightRepository"
+    <bean id="zamek" class="com.malykriszo.kursspring.domain.repository.InMemoryRepository"
           init-method="build"
           destroy-method="tearDown">
         <constructor-arg index="0" ref="lancelot"/>
